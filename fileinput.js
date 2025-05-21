@@ -23,14 +23,16 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                 // gestures.invisible(); // to disable blue tracker
                 gestures.start();
                 gestures.on('processKeyPoints', ({ left, top }) => {
-                    console.log('Event from processKeyPoints:', left, top);
+                    if (document.getElementById("calib_cursor").style.display == "none") {
+                        console.log('Event from processKeyPoints:', left, top);
 
-                    if (top < edgeThreshold) {
-                        // Near top → scroll up
-                        window.scrollBy({ top: -scrollSpeed, behavior: 'smooth' });
-                    } else if (top > (screenHeight - edgeThreshold)) {
-                        // Near bottom → scroll down
-                        window.scrollBy({ top: scrollSpeed, behavior: 'smooth' });
+                        if (top < edgeThreshold) {
+                            // Near top → scroll up
+                            window.scrollBy({ top: -scrollSpeed, behavior: 'smooth' });
+                        } else if (top > (screenHeight - edgeThreshold)) {
+                            // Near bottom → scroll down
+                            window.scrollBy({ top: scrollSpeed, behavior: 'smooth' });
+                        }
                     }
                 });
             })

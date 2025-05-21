@@ -149,7 +149,7 @@ class EyeGestures {
             (this.prev_calib = [0, 0]),
             (this.head_starting_pos = [0, 0]),
             (this.calib_counter = 0),
-            (this.calib_max = 10),
+            (this.calib_max = 20),
             (this.counter = 0),
             (this.collected_points = 0),
             (this.buffor = []),
@@ -325,7 +325,7 @@ emit(event, data) {
             t
                 ? ((a = this.calibrator.getCurrentPoint(this.screen_width, this.screen_height)),
                   this.calibrator.add(h, a),
-                  euclideanDistance(e, a) < 0.1 * this.screen_width && 10 < this.counter ? (this.calibrator.movePoint(), (this.counter = 0)) : euclideanDistance(e, a) < 0.1 * this.screen_width && (this.counter = this.counter + 1),
+                  euclideanDistance(e, a) < 0.1 * this.screen_width && 20 < this.counter ? (this.calibrator.movePoint(), (this.counter = 0)) : euclideanDistance(e, a) < 0.1 * this.screen_width && (this.counter = this.counter + 1),
                   (this.prev_calib[0] == a[0] && this.prev_calib[1] == a[1]) || ((this.prev_calib = a), (this.calib_counter = this.calib_counter + 1)))
                 : (document.getElementById("calib_cursor").style.display = "None");
         (r = document.getElementById("cursor")),
