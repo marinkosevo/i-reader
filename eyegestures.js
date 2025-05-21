@@ -149,7 +149,7 @@ class EyeGestures {
             (this.prev_calib = [0, 0]),
             (this.head_starting_pos = [0, 0]),
             (this.calib_counter = 0),
-            (this.calib_max = 20),
+            (this.calib_max = 5),
             (this.counter = 0),
             (this.collected_points = 0),
             (this.buffor = []),
@@ -188,7 +188,7 @@ emit(event, data) {
             (e.style.zIndex = "1000");
         var i = document.createElement("div"),
             s = ((i.style.textAlign = "center"), (i.style.color = "#fff"), (i.style.fontFamily = "Arial, sans-serif"), document.createElement("h3")),
-            a = ((s.textContent = "EyeGestures Calibration:"), (s.style.fontSize = "1.5rem"), (s.style.marginBottom = "20px"), document.createElement("p")),
+            a = ((s.textContent = ""), (s.style.fontSize = "1.5rem"), (s.style.marginBottom = "20px"), document.createElement("p")),
             r = ((a.innerHTML = 'To calibrate properly you need to gaze on <span style="color: #ff5757; font-weight: bold;"> red circles</span>.'), (a.style.marginBottom = "20px"), document.createElement("p")),
             n =
                 ((r.innerHTML = 'The <span style="color: #5e17eb; font-weight: bold;">blue circle</span> is your estimated gaze. With every calibration point, the tracker will gradually listen more and more to your gaze.'),
@@ -325,7 +325,7 @@ emit(event, data) {
             t
                 ? ((a = this.calibrator.getCurrentPoint(this.screen_width, this.screen_height)),
                   this.calibrator.add(h, a),
-                  euclideanDistance(e, a) < 0.1 * this.screen_width && 20 < this.counter ? (this.calibrator.movePoint(), (this.counter = 0)) : euclideanDistance(e, a) < 0.1 * this.screen_width && (this.counter = this.counter + 1),
+                  euclideanDistance(e, a) < 0.1 * this.screen_width && 5 < this.counter ? (this.calibrator.movePoint(), (this.counter = 0)) : euclideanDistance(e, a) < 0.1 * this.screen_width && (this.counter = this.counter + 1),
                   (this.prev_calib[0] == a[0] && this.prev_calib[1] == a[1]) || ((this.prev_calib = a), (this.calib_counter = this.calib_counter + 1)))
                 : (document.getElementById("calib_cursor").style.display = "None");
         (r = document.getElementById("cursor")),

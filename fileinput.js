@@ -14,6 +14,9 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                 const screenHeight = window.innerHeight;
                 let gazeOverThresholdStart = null;
                 const closedEyesThreshold = 3000;
+                const overlay = document.getElementById('popupOverlay');
+                let overlayActive = false
+                let turnedOff = false
 
                 function onPoint(point, calibration) {
                     point[0]; // x
@@ -51,7 +54,10 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                                     gazeOverThresholdStart = null; // Reset so it doesn't keep triggering
                                 }
                                 else {
-                                    alert('Turning off');
+                                    if (turnedOff == false) {
+                                        alert('Turning off');
+                                        turnedOff = true;
+                                    }
                                 }
                             }
                         }
