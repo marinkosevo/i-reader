@@ -10,7 +10,7 @@ document.getElementById('fileInput').addEventListener('change', function (event)
 
 
                 const scrollSpeed = 5; // px per frame
-                const edgeThreshold = 200; // px from top/bottom edge that triggers scrolling
+                const edgeThreshold = 100; // px from top/bottom edge that triggers scrolling
                 const screenHeight = window.innerHeight;
 
                 function onPoint(point, calibration) {
