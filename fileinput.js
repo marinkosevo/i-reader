@@ -25,6 +25,7 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                 // gestures.invisible(); // to disable blue tracker
                 gestures.start();
                 gestures.on('processKeyPoints', ({ left, top }) => {
+                    const now = Date.now();
                     if (document.getElementById("calib_cursor").style.display == "none") {
                         document.getElementById("cursor").style.display = "none";
                         console.log('Event from processKeyPoints:', left, top);
