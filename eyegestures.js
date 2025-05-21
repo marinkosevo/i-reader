@@ -1,3 +1,24 @@
+/*
+EyeGesturesLite License
+
+Copyright (c) 2024 Piotr Walas
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to use the Software in personal and commercial projects, subject to the following conditions:
+
+Attribution: 
+The EyeGesturesLite logo must be prominently displayed in all projects or products that use this Software.
+
+No Warranty: 
+The Software is provided "as is", without warranty of any kind, express or implied,
+including but not limited to the warranties of merchantability, 
+fitness for a particular purpose, and noninfringement. 
+In no event shall the authors or copyright holders be liable for any claim, 
+damages, or other liability, whether in an action of contract, tort, 
+or otherwise, arising from, out of, or in connection with 
+the Software or the use or other dealings in the Software.
+*/
+
 const euclideanDistance = (t, s) => Math.sqrt(t.reduce((t, e, i) => t + Math.pow(e - s[i], 2), 0));
 class Calibrator {
     static PRECISION_LIMIT = 50;
@@ -322,7 +343,7 @@ emit(event, data) {
         this.run = !0;
     }
     start() {
-        (document.getElementById("logoDivEyeGestures").style.display = "flex"),
+        //(document.getElementById("logoDivEyeGestures").style.display = "flex"),
             this.showCalibrationInstructions(this.__run.bind(this)),
             this.__invisible || (document.getElementById("cursor").style.display = "block"),
             (document.getElementById("calib_cursor").style.display = "block");
