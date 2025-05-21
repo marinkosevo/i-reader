@@ -24,6 +24,7 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                 gestures.start();
                 gestures.on('processKeyPoints', ({ left, top }) => {
                     if (document.getElementById("calib_cursor").style.display == "none") {
+                        document.getElementById("cursor").style.display = "none";
                         console.log('Event from processKeyPoints:', left, top);
 
                         if (top < edgeThreshold) {
