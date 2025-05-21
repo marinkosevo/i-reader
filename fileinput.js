@@ -12,6 +12,8 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                 const scrollSpeed = 5; // px per frame
                 const edgeThreshold = 100; // px from top/bottom edge that triggers scrolling
                 const screenHeight = window.innerHeight;
+                let gazeOverThresholdStart = null;
+                const closedEyesThreshold = 3000;
 
                 function onPoint(point, calibration) {
                     point[0]; // x
@@ -27,12 +29,33 @@ document.getElementById('fileInput').addEventListener('change', function (event)
                         document.getElementById("cursor").style.display = "none";
                         console.log('Event from processKeyPoints:', left, top);
 
+                        //Scroll
                         if (top < edgeThreshold) {
                             // Near top → scroll up
                             window.scrollBy({ top: -scrollSpeed, behavior: 'smooth' });
                         } else if (top > (screenHeight - edgeThreshold)) {
                             // Near bottom → scroll down
                             window.scrollBy({ top: scrollSpeed, behavior: 'smooth' });
+                        }
+
+                        //not looking
+
+                        if (left < 0) {
+                            if (gazeOverThresholdStart === null) {
+                                gazeOverThresholdStart = now;
+                            } else if (now - gazeOverThresholdStart >= closedEyesThreshold) {
+                                if (!overlayActive) {
+                                    overlay.classList.add('active');
+                                    overlayActive = true;
+                                    gazeOverThresholdStart = null; // Reset so it doesn't keep triggering
+                                }
+                                else {
+                                    alert('Turning off');
+                                }
+                            }
+                        }
+                        else {
+                            gazeOverThresholdStart = null; // Reset so it doesn't keep triggering
                         }
                     }
                 });
