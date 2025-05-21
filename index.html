@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Book Reader</title>
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://www.lactame.com/lib/ml/6.0.0/ml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+<script src="eyegestures.js"></script>
+<style>
+    #calibrationOverlay, #calib_cursor, #cursor{
+    }
+</style>
+<body>
+    <input type="file" id="fileInput" />
+    <label for="fileInput" class="upload-button">Select File</label>
+    <div id="displayArea" class="hidden"></div>
+    <video id="video" width="640" height="480" autoplay style="display: none;"></video>
+    <div id="status" style="display : none;">Initializing...</div>
+    <div id="error" style="display : none;"></div>
+
+    <!-- Overlay and popup -->
+    <div class="overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <div id="popup" class="popup">
+            <div id="buttons">
+                <button class="btn-focus" id="focusBtn">
+                    <div style="position:absolute; left:20px; display:inline-flex; gap: 8px"><i
+                            class="fas fa-arrow-left"></i><i class="fas fa-eye"></i></div>Focus mode
+                </button>
+                <button class="btn-summarize" id="summarizeBtn">Summary <div
+                        style="position:absolute; right:20px; display:inline-flex; gap: 8px"><i
+                            class="fas fa-eye"></i><i class="fas fa-arrow-right"></i></div></button>
+                <button class="btn-turnoff" id="turnoffBtn"><i class="fas fa-eye-slash"></i></button>
+
+            </div>
+
+            <div id="loader" style="display:none; margin-top:10px;">Summarizing previous chapter...</div>
+            <div id="summaryOutput" style="margin-top:10px; font-weight: bold;"></div>
+        </div>
+
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+
+<script src="fileinput.js"></script>
+<script>
+</script>
+
+</html>
